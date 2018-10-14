@@ -1,0 +1,63 @@
+﻿@model MvcAuth.Models.AssignRoleVM
+@{
+    ViewBag.Title = "RoleAddToUser";
+}
+<h2>RoleAddToUser</h2>
+<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/bootstrap/js/bootstrap.min.js"></script>
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success!</strong> @ViewBag.Message
+        </div>
+    }
+}
+else
+{
+    using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <div>
+            @ViewBag.ResultMessage
+        </div>
+        <fieldset>
+            <legend>AssignRoleVM</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.RoleName)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.RoleName, new SelectList(Model.RolesList, "Value", "Text"),
+             new { style = "width:200px", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RoleName)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.UserName, new SelectList(Model.UserList, "Value", "Text"),
+             new { style = "width:200px", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+            <br />
+            <p>
+                <input type="submit" value="Assign" />
+            </p>
+        </fieldset>
+    }
+}
+
+<div>
+
+    @Html.ActionLink("Back to List", "Index")
+
+</div>
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+

@@ -1,0 +1,36 @@
+﻿
+@model IEnumerable<MvcAuth.DataAccess.Role>
+
+@using GridMvc.Html
+
+@{
+
+    ViewBag.Title = "DisplayAllRoles";
+
+}
+
+
+
+<h2>DisplayAllRoles</h2>
+
+
+
+<link href="~/Content/Gridmvc.css" rel="stylesheet" />
+
+<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+
+<script src="~/Scripts/gridmvc.js"></script>
+
+
+
+@Html.Grid(Model).Columns(columns =>
+
+{
+
+columns.Add(c => c.RoleId).Titled("Role ID");
+
+columns.Add(c => c.RoleName).Titled("RoleName").Filterable(true);
+
+}).WithPaging(10).Sortable(true)

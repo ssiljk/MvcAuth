@@ -1,0 +1,45 @@
+﻿@model MvcAuth.DataAccess.Role
+
+@{
+    ViewBag.Title = "RoleUsers";
+}
+
+<h2>RoleUsers</h2>
+<div>
+    <h4>Role</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleName)
+        </dd>
+
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Usuario</th>
+                    
+                </tr>
+                @foreach (var item in Model.Users)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Username)
+                        </td>
+                        
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+    
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RoleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

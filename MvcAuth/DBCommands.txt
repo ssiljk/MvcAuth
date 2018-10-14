@@ -1,0 +1,12 @@
+﻿1) Borrar archivo initial_migration del folder Migrations y la BD
+1.1) Si hace falta cambier el modelo para los usuarios y roles hacerlo en el folder DataAccess pero hay que estar pendiente
+de que puede hacer falta hacer modificaciones en los controladores.
+2) Poner la conexion a la BD en el config file
+3) Habilitar las migraciones 
+Enable-migrations
+
+4) Agregar la migracion inicial
+add-migration "initial-migration"
+
+5) Actualizar la BD
+update-database -verbose
